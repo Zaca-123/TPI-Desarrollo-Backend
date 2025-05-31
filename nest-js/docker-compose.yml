@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-restaurant
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: Restaurant
+    ports:
+      - '5432:5432'
+    networks:
+      - restaurant-net
+
+  nestjs:
+    image: tu-imagen-nestjs
+    container_name: restaurant-nest
+    environment:
+      - NODE_ENV=development
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    networks:
+      - restaurant-net
+
+networks:
+  restaurant-net:
+    driver: bridge
