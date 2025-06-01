@@ -16,7 +16,11 @@ export class MenuService {
   }
 
   async findOne(id: number): Promise<MenuEntity> {
-    return this.menuRepository.findOne({ where: { id } });
+    const menu = await this.menuRepository.findOne({ where: { id } });
+    if (!menu) {
+      throw new Error(`Menu with id ${id} not found`);
+    }
+    return menu;
   }
 
   async create(data: Partial<MenuEntity>): Promise<MenuEntity> {
