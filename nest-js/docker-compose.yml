@@ -17,7 +17,11 @@ services:
     build: .
     container_name: restaurant-nest
     environment:
-      - NODE_ENV=development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: restaurant
     ports:
       - '3000:3000'
     depends_on:
