@@ -4,22 +4,29 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-
 import { MenuEntity } from './Entitys/menu';
 import { ProductEntity } from './Entitys/product';
 import { RestaurantEntity } from './Entitys/restaurant';
 
+
+import { RestaurantController } from './Entitys/restaurant/restaurant.controller';
+import { RestaurantService } from './Entitys/restaurant/restaurant.service';
+
+import { MenuController } from './Entitys/menu/menu.controller';
+import { MenuService } from './Entitys/menu/menu.service';
+
+import { ProductController } from './Entitys/product/product.controller';
+import { ProductService } from './Entitys/product/product.service';
+
 @Module({
   imports: [
-    // ConfigModule para leer variables de entorno
     ConfigModule.forRoot({
-      isGlobal: true, // Esto hace que las variables de entorno sean accesibles en toda la app
+      isGlobal: true,
     }),
-
     TypeOrmModule.forRootAsync({
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get<string>('DB_HOST'), // Obtiene el valor de DB_HOST desde el .env
+        host: configService.get<string>('DB_HOST'),
         port: configService.get<number>('DB_PORT'),
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
@@ -31,7 +38,17 @@ import { RestaurantEntity } from './Entitys/restaurant';
     }),
     TypeOrmModule.forFeature([MenuEntity, ProductEntity, RestaurantEntity]),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    AppController,
+    RestaurantController,
+    MenuController,
+    ProductController,
+  ],
+  providers: [
+    AppService,
+    RestaurantService,
+    MenuService,
+    ProductService,
+  ],
 })
 export class AppModule {}
