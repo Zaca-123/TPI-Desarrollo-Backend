@@ -8,7 +8,8 @@ export class UsersService {
     {
       id: 1,
       username: 'admin',
-      password: 'admin123', // En producción debería ir hasheado
+      password: 'admin123',
+      role: 'admin'
     },
   ];
 
