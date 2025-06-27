@@ -1,4 +1,3 @@
-// src/auth/auth.module.ts
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UsersModule } from '../users/user.module';
@@ -13,7 +12,7 @@ import { AuthController } from './auth.controller';
     UsersModule,
     PassportModule,
     JwtModule.register({
-      secret: 'jwt-secret-key', // En producción usar variable de entorno
+      secret: 'jwt-secret-key', 
       signOptions: { expiresIn: '1h' },
     }),
   ],

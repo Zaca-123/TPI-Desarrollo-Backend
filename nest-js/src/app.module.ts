@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { MenuEntity } from './Entitys/menu';
 import { ProductEntity } from './Entitys/product';
 import { RestaurantEntity } from './Entitys/restaurant';
-
 
 import { RestaurantController } from './Entitys/restaurant/restaurant.controller';
 import { RestaurantService } from './Entitys/restaurant/restaurant.service';
@@ -17,6 +17,8 @@ import { MenuService } from './Entitys/menu/menu.service';
 
 import { ProductController } from './Entitys/product/product.controller';
 import { ProductService } from './Entitys/product/product.service';
+
+import { AuthModule } from './auth/auth.module'; 
 
 @Module({
   imports: [
@@ -37,6 +39,9 @@ import { ProductService } from './Entitys/product/product.service';
       inject: [ConfigService],
     }),
     TypeOrmModule.forFeature([MenuEntity, ProductEntity, RestaurantEntity]),
+
+   
+    AuthModule,
   ],
   controllers: [
     AppController,
