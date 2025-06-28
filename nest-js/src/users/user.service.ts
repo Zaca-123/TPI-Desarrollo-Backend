@@ -1,4 +1,4 @@
-// src/users/users.service.ts
+
 import { Injectable } from '@nestjs/common';
 import { User } from './user.entity';
 
@@ -10,6 +10,12 @@ export class UsersService {
       username: 'admin',
       password: 'admin123',
       role: 'admin'
+    },
+    {
+      id: 2,
+      username: 'cliente',
+      password: 'cliente',
+      role: 'viewer',
     },
   ];
 

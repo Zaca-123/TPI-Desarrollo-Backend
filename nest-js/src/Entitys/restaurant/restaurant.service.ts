@@ -26,7 +26,19 @@ export class RestaurantService {
   }
 
   async create(data: Partial<RestaurantEntity>): Promise<RestaurantEntity> {
-    const restaurant = this.restaurantRepository.create(data);
-    return this.restaurantRepository.save(restaurant);
+    console.log('📝 Creating restaurant with data:', data);
+    
+    try {
+      const restaurant = this.restaurantRepository.create(data);
+      console.log('✨ Restaurant entity created:', restaurant);
+      
+      const savedRestaurant = await this.restaurantRepository.save(restaurant);
+      console.log('💾 Restaurant saved to database:', savedRestaurant);
+      
+      return savedRestaurant;
+    } catch (error) {
+      console.error('❌ Error creating restaurant:', error);
+      throw error;
+    }
   }
 }

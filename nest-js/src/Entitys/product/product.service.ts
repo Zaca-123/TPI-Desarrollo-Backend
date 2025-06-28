@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class ProductService {
   constructor(
     @InjectRepository(ProductEntity)
-    private productRepository: Repository<ProductEntity>,
+    private readonly productRepository: Repository<ProductEntity>,
   ) {}
 
   findAll(): Promise<ProductEntity[]> {

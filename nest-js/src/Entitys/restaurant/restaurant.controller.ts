@@ -17,7 +17,16 @@ export class RestaurantController {
   }
 
   @Post()
-  create(@Body() data: Partial<RestaurantEntity>): Promise<RestaurantEntity> {
-    return this.restaurantService.create(data);
+  async create(@Body() data: Partial<RestaurantEntity>): Promise<RestaurantEntity> {
+    console.log('🎯 POST /restaurant called with data:', data);
+    
+    try {
+      const result = await this.restaurantService.create(data);
+      console.log('✅ Restaurant created successfully:', result);
+      return result;
+    } catch (error) {
+      console.error('💥 Error in controller:', error);
+      throw error;
+    }
   }
 }

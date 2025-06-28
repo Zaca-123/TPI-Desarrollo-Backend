@@ -1,4 +1,3 @@
-// menu.service.ts
 import { Injectable } from '@nestjs/common';
 import { MenuEntity } from './menu';
 import { Repository } from 'typeorm';

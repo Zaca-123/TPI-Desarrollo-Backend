@@ -9,16 +9,11 @@ import { MenuEntity } from './Entitys/menu';
 import { ProductEntity } from './Entitys/product';
 import { RestaurantEntity } from './Entitys/restaurant';
 
-import { RestaurantController } from './Entitys/restaurant/restaurant.controller';
-import { RestaurantService } from './Entitys/restaurant/restaurant.service';
+import { RestaurantModule } from './Entitys/restaurant/restaurant.module';
+import { MenuModule } from './Entitys/menu/menu.module';
+import { ProductModule } from './Entitys/product/product.module';
 
-import { MenuController } from './Entitys/menu/menu.controller';
-import { MenuService } from './Entitys/menu/menu.service';
-
-import { ProductController } from './Entitys/product/product.controller';
-import { ProductService } from './Entitys/product/product.service';
-
-import { AuthModule } from './auth/auth.module'; 
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -38,22 +33,16 @@ import { AuthModule } from './auth/auth.module';
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([MenuEntity, ProductEntity, RestaurantEntity]),
-
-   
+    RestaurantModule,
     AuthModule,
+    MenuModule,
+    ProductModule,
   ],
   controllers: [
-    AppController,
-    RestaurantController,
-    MenuController,
-    ProductController,
+    AppController,  
   ],
   providers: [
-    AppService,
-    RestaurantService,
-    MenuService,
-    ProductService,
+    AppService,     
   ],
 })
 export class AppModule {}

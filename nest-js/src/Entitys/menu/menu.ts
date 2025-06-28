@@ -1,5 +1,5 @@
 import {BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
-import { RestaurantEntity } from '..//restaurant/restaurant';
+import { RestaurantEntity } from '../restaurant/restaurant';
 import { ProductEntity } from '..//product/product';
 
 @Entity('menu')
