@@ -5,9 +5,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { MenuEntity } from './Entitys/menu';
-import { ProductEntity } from './Entitys/product';
-import { RestaurantEntity } from './Entitys/restaurant';
+import { MenuEntity } from './Entitys/menu/menu';
+import { ProductEntity } from './Entitys/product/product';
+import { RestaurantEntity } from './Entitys/restaurant/restaurant';
 
 import { RestaurantModule } from './Entitys/restaurant/restaurant.module';
 import { MenuModule } from './Entitys/menu/menu.module';
